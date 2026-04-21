@@ -1,29 +1,29 @@
 # 🛒 E-Commerce Purchase Intent Prediction (Machine Learning)
 
 ## 🎯 Executive Summary
-The objective of this project was to develop a predictive model for a leading e-commerce platform to identify high-potential customers. By analysing user session behaviour, the model predicts the likelihood of a purchase, enabling the marketing team to optimise ad spend and increase overall conversion rates.
+The objective of this project was to develop a predictive model for a leading e-commerce platform to identify high-potential customers. By analysing user session behaviour, the model predicts the likelihood of a purchase, allowing the marketing team to optimise ad spend and reduce unnecessary marketing overhead by excluding low-intent users from expensive re-targeting campaigns.
 
 ## 🛠️ Technical Stack & Data Engineering
 *   **Language:** Python 3.x
 *   **Libraries:** Scikit-Learn (Machine Learning), Pandas (Data Manipulation), NumPy (Numerical Analysis), Seaborn/Matplotlib (Visualisation).
-*   **Algorithm:** **Random Forest Classifier** — chosen for its robustness and ability to handle complex, non-linear relationships while preventing overfitting.
+*   **Algorithm:** **Random Forest Classifier** — chosen for its versatility in handling both categorical and continuous variables while remaining robust against overfitting.
 
 ## 🏗️ Model Development Pipeline
 
-### 1. Data Pre-Processing & Feature Selection
-Cleaned and structured raw session data, focusing on five key predictive features:
-*   **User Demographics:** Age and Gender.
-*   **Engagement Metrics:** Time Spent on Site and Pages Viewed.
-*   **Marketing Interaction:** Ad Clicked status.
+### 1. Feature Analysis & Selection
+The model utilises five key predictive features to determine purchase intent:
+*   **Continuous Features:** Age and Time Spent on Site.
+*   **Categorical Features:** Gender, Pages Viewed, and Ad Clicked status.
+*   **Target Variable:** Purchase (1 = Yes, 0 = No).
 
 ### 2. Model Training & Reproducibility
 *   **Data Split:** Implemented a **70/30 Train/Test split** to ensure the model was validated on unseen data.
-*   **Consistency:** Utilised `random_state=42` to ensure consistent, reproducible results across different environments.
+*   **Reproducibility:** Utilised `random_state=42` to ensure consistent results across different environments.
 *   **Optimisation:** Configured `n_estimators=100` and `max_depth=10` to balance model accuracy with computational efficiency.
 
 ### 3. Performance Evaluation (The "BS" Detector)
 *   **Accuracy:** The model achieved a **90% accuracy rate** on the test set.
-*   **Classification Report:** Verified precision and recall to ensure the model effectively identifies actual buyers while minimising "False Positives" (wasted ad spend).
+*   **Confusion Matrix:** Utilised to compare predicted vs. actual classes, ensuring high precision in identifying real buyers.
 
 ---
 *This project was completed as part of the Professional Certificate in Data Analytics & AI (Code Institute).*
@@ -35,12 +35,18 @@ A sample of the cleaned dataset used to train the Random Forest model, demonstra
 ![Data Sample](ml_data_head.png)
 
 ### 2. Model Performance (Confusion Matrix)
-The Seaborn heatmap below visualises the accuracy of the predictions. With only 2 false positives in the test set, the model demonstrates high precision.
+The Seaborn heatmap below visualises the accuracy of the predictions. By identifying True Negatives correctly, the business can avoid wasting budget on uninterested users.
 ![Confusion Matrix](ml_heatmap.png)
 
 ### 3. Full Technical Execution (Audit Log)
-This screenshot captures the final evaluation metrics and classification report from the Jupyter environment, proving model reliability.
+This screenshot captures the final evaluation metrics and classification report, proving 90% accuracy.
 ![Model Results](ml_results.png)
+
+## 🔮 Real-World Inference: The "Money-Saving" Logic
+To test the model's practical application, I ran a specific "Time-Waster" test case through the engine:
+- **Input:** 32yo Female, 15.4 mins on site, 8 pages viewed, clicked ad.
+- **Model Prediction:** **[0] - No Purchase.**
+- **Business Action:** In a live environment, this user would be **excluded** from high-cost re-targeting ads. By predicting this user wouldn't buy despite their ad click, the model saves the business "Marketing Overhead"—ensuring ad spend is only used on high-probability conversions.
 
 ### 🧠 Python Logic & Model Configuration
 The code below demonstrates the surgical implementation of the predictive engine:
