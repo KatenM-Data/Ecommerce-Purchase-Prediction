@@ -32,7 +32,8 @@ By deploying this predictive model, the business can move from "Reactive" to "Pr
 ### A. 📉 Reduce Waste (The "Money-Saving" Filter)
 *   **The Problem:** Traditional re-targeting ad campaigns are expensive and often target users who have zero intent to buy.
 *   **The Proof (Real-World Inference):** 
-    *   **Test Case:** 32yo Female, 15.4 mins on site, 8 pages viewed, clicked ad.
+    *   **Test Case:** 32yo Female, 15.4 mins on site, 8 pages viewed, clicked ad. As seen in the inference test below, the model correctly identifies a session that will NOT result in a purchase.
+![Real World Inference](ml_inference.png)
     *   **Model Prediction:** **[0] - No Purchase.**
 *   **The Action:** In a live production environment, this user would be **excluded** from high-cost ad lists. By predicting a non-purchase despite the ad click, the model reduces "Marketing Overhead" by an estimated **30%** without losing a single sale.
 
